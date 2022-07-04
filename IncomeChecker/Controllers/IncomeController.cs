@@ -35,15 +35,15 @@ namespace IncomeChecker.Controllers
         /// <returns>Return the users average, yearly and monthly income</returns>
         /// <param name="Id">Id of account</param>
         /// <remarks>
-        /// Sample Request
-        /// GET /api/Income?Id=62b2d5f6f5c89628113e0d06
+        ///     Sample Request
+        ///     GET /api/Income?Id=62b2d5f6f5c89628113e0d06
         /// </remarks>
         [Produces("application/json")]
         [HttpGet, Authorize]
         [ProducesResponseType(typeof(IncomeResponseModel), 200), ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetIncome(string Id)
         {
-            if (Id == null || Id == "") return BadRequest();
+            if (Id == null || Id == "") return BadRequest("Id cannot be empty.");
 
             try
             {
